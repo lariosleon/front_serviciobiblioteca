@@ -1,0 +1,30 @@
+<div class="contenido-menu">
+<div class="menu-container">
+  <p class="facturacion">SISTEMA DE BIBLIOTECA</p>
+  <ul>
+    <details >
+      <summary  >Registros</summary>
+      <li>
+        <button
+          routerLinkActive="underline"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLink="/app/prestamoslibros" 
+          >
+          📁 Prestamos
+          
+        </button>
+      </li>
+    <!--   <li>
+        <button routerLink="/app/producto" routerLinkActive="underline">
+          🛒 Producto
+        </button>
+      </li> -->
+    </details>
+
+  </ul>
+
+</div>
+<button class="salir" (click)="salir()">✖️ Salir</button>
+
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,41 @@
+
+<div class="formulario">
+  <p class="nota">Registro de Prestamos de Libros: recuerde ingresar todos los campos</p>
+  <p class="datos">Datos:</p>
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div>
+      <label class="col-sm-2 col-form-label">Empleado</label>
+      <select formControlName="empleado">
+        <option select value=''>...Seleccionar...</option>
+        <option *ngFor="let empleado of maestrosEmpleados" [value]="empleado.id">{{ empleado.nombre }}</option>
+      </select>
+    </div>
+    <div>
+      <label class="col-sm-2 col-form-label">Estudiante</label>
+      <select name="" id="" formControlName="estudiantes">
+        <option select value=''>...Seleccionar...</option>
+        <option *ngFor="let estudiante of maestrosEstudiantes" [value]="estudiante.id">{{ estudiante.nombre }}</option>
+      </select>
+    </div>
+    <div>
+      <label class="col-sm-2 col-form-label">Libro</label>
+      <select name="" id="" formControlName="libros">
+        <option select value=''>...Seleccionar...</option>
+        <option *ngFor="let libros of maestrosLibros" [value]="libros.id">{{ libros.nombre }}</option>
+      </select>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Fecha de Inicio</label>
+      <div class="col-sm-3">
+        <input formControlName="fecha_inicio" type="date" class="form-control" placeholder="Fecha de Inicio">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Fecha de Finalizacion</label>
+      <div class="col-sm-3">
+        <input formControlName="fecha_finalizacion" type="date" class="form-control" placeholder="Fecha de Finalizacion">
+      </div>
+    </div>
+    <button type="submit">Guardar Datos</button>
+  </form>
+</div>

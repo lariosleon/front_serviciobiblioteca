@@ -1,0 +1,63 @@
+
+
+
+<div class="table-container">
+  <p class="rojo">
+    Listado de Prestamos - Sistema de Biblioteca V.1.0
+  </p>
+
+  <div class="buscar">
+    <label for="">Buscar: </label>
+    <input type="text" (keyup)="buscar($event)">
+    
+  </div>
+
+  <button id="nuevo" routerLink="/app/prestamoslibros/nuevo" >Nuevo +</button>
+  
+  <div class="separador">
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Empleados</th>
+            <th>Estudiantes</th>
+            <th>Libros</th>
+            <th>Fecha de Inicio</th>
+            <th>Fecha de Finalizacion</th>
+            <th>Estado</th>
+            <th>Fecha de Retorno</th>
+            <th class="acciones">Acciones</th>
+          </tr>
+        </thead>
+        
+
+        <tbody>
+          <tr *ngFor="let prestamoslibros of filtroPrestamosLibros">
+            <td>{{ prestamoslibros.id }}</td>
+            <td>{{ prestamoslibros.empleado }}</td>
+            <td >{{ prestamoslibros.estudiantes }}</td>
+            <td>{{ prestamoslibros.libro }}</td>
+            <td>{{ prestamoslibros.fecha_Inicio }}</td>
+            <td>{{ prestamoslibros.fecha_Fin }}</td>
+            <td>{{ prestamoslibros.estado }}</td>
+            <td>{{ prestamoslibros.fecha_Retorno }}</td>
+            <td class="acciones">
+              <button class="editar" (click)="toggleModoEdicion(prestamoslibros)">✏️</button>
+              <button (click)="eliminarPorId(prestamoslibros.idCliente)">❌</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="pup-up" [ngClass]="{ 'oculto': modoOculto }">
+    <div class="pop-up-container">
+      <span class="cerrar" (click)="editarModoOcuto()">❌</span>
+      <app-editar-prestamoslibros class="editar" [personaEditar]="prestamoslibrosEditar" (modoOculto)="editarModoOcuto()"></app-editar-prestamoslibros>
+      
+    </div>
+  </div>
+
+</div>
