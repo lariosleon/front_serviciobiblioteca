@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { PrestamosLibrosService } from 'src/app/service/prestamosdelibros.service';
+import { DatePipe } from '@angular/common';
+
 @Component({
   selector: 'app-home-prestamoslibros',
   templateUrl: './home-prestamoslibros.component.html',
@@ -29,18 +31,19 @@ export class HomePrestamoslibrosComponent {
     console.log(id)
     this.prestamosLibrosService.eliminarPorId(id).subscribe(
       (response) => {
-      console.log('Persona eliminada correctamente');
+      alert('Prestamo de Libros eliminado correctamente');
       this.getData();
     }, error => {
-      console.error('Error al eliminar persona:', error);
+      alert('Error al eliminar prestamos de libros'+error);
     });
   }
+  
   buscar(texto: Event) {
     const input = texto.target as HTMLInputElement;
     console.log(input.value);
     console.log(this.prestamoslibros);
     this.filtroPrestamosLibros = this.prestamoslibros.filter( (prestamos_libros: any) =>
-      prestamos_libros.id.toString().includes(input.value.toLowerCase()) ||
+    prestamos_libros.id.toString().includes(input.value.toLowerCase()) ||
     prestamos_libros.empleados.toLowerCase().includes(input.value.toLowerCase()) ||
     prestamos_libros.estudiantes.toLowerCase().includes(input.value.toLowerCase()) ||
     prestamos_libros.libro.toLowerCase().includes(input.value.toLowerCase()) ||
@@ -61,8 +64,6 @@ export class HomePrestamoslibrosComponent {
   editarModoOcuto(){
     this.modoOculto = !this.modoOculto;
     this.getData();
+  
   }
-
-
-
 }

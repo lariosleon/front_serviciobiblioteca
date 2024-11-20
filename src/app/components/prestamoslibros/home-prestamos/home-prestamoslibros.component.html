@@ -38,13 +38,13 @@
             <td>{{ prestamoslibros.empleado }}</td>
             <td >{{ prestamoslibros.estudiantes }}</td>
             <td>{{ prestamoslibros.libro }}</td>
-            <td>{{ prestamoslibros.fecha_Inicio }}</td>
-            <td>{{ prestamoslibros.fecha_Fin }}</td>
+            <td>{{ prestamoslibros.fecha_Inicio | date}}</td>
+            <td>{{ prestamoslibros.fecha_Fin | date }}</td>
             <td>{{ prestamoslibros.estado }}</td>
-            <td>{{ prestamoslibros.fecha_Retorno }}</td>
+            <td>{{ prestamoslibros.fecha_Retorno | date }}</td>
             <td class="acciones">
               <button class="editar" (click)="toggleModoEdicion(prestamoslibros)">✏️</button>
-              <button (click)="eliminarPorId(prestamoslibros.idCliente)">❌</button>
+              <button (click)="eliminarPorId(prestamoslibros.id)">❌</button>
             </td>
           </tr>
         </tbody>
@@ -55,7 +55,7 @@
   <div class="pup-up" [ngClass]="{ 'oculto': modoOculto }">
     <div class="pop-up-container">
       <span class="cerrar" (click)="editarModoOcuto()">❌</span>
-      <app-editar-prestamoslibros class="editar" [personaEditar]="prestamoslibrosEditar" (modoOculto)="editarModoOcuto()"></app-editar-prestamoslibros>
+      <app-editar-prestamoslibros class="editar" [prestamoslibrosEditar]="prestamoslibrosEditar" (modoOculto)="editarModoOcuto()"></app-editar-prestamoslibros>
       
     </div>
   </div>

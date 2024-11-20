@@ -1,36 +1,48 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../env/env';
 import { ResponseData } from 'src/app/interface/interfaces';
 import { librosprestados } from '../interface/librosprestado';
+import { librosprest } from '../interface/librosprest';
+
 @Injectable({
   providedIn: 'root'
 })
 export class PrestamosLibrosService {
-  public datos:librosprestados[]=[];
+  public datos!:librosprestados[];
   public datosagrabar:any=[];
   private URL_API: string = environment.ApiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private https: HttpClient) { }
 
   getData(): Observable<any> {
-    return this.http.get<any>(`${this.URL_API}/Prestamos`);
+    return this.http.get<any>(`${this.URL_API}/api/Prestamos`);
   }
 
-  enviarDatos(datosagrabar:librosprestados) {
-    debugger;
-    return this.http.post(`${this.URL_API}/Prestamos`, datosagrabar);
+  enviarDatos(datos:any) {
+    const headers = { 'content-type': 'application/json'}  
+    const body=JSON.stringify(datos);
+    
+    return this.https.post(`${this.URL_API}/api/Prestamos`, body,{'headers':headers});
   }
 
   eliminarPorId(id: number) {
-    const url = `${this.URL_API}/clientes/eliminar/${id}`;
+    const url = `${this.URL_API}/api/Prestamos/${id}`;
     return this.http.delete(url);
   }
 
-  actualizar(datos: any) {
-    return this.http.put(`${this.URL_API}/clientes/actualizar`, datos);
+  buscarPorId(id: number):Observable<any>{
+    return this.http.get<any>(`${this.URL_API}/api/Prestamos/${id}`);
   }
+
+  actualizar(datos: any) {
+    debugger;
+    const headers = { 'content-type': 'application/json'}  
+    const body=JSON.stringify(datos);
+    return this.http.put(`${this.URL_API}/api/Prestamos`, body,{'headers':headers});
+  }
+
   verificarExistencia(cod: string) {
     return this.http.get<ResponseData>(`${this.URL_API}/clientes/verificar-cliente/${cod}`);
   }

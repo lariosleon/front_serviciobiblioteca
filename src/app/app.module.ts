@@ -13,6 +13,7 @@ import { LoginComponent } from './page/login/login.component';
 import { PageModule } from './page/page.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditarPrestamosLibrosComponent } from './components/prestamoslibros/editar-prestamos/editar-prestamoslibros.component';
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { EditarPrestamosLibrosComponent } from './components/prestamoslibros/edi
     BrowserAnimationsModule,
     // PageModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
