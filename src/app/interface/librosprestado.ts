@@ -7,7 +7,7 @@ export interface librosprestados {
         libro: string;
         libro_id: number;
         fecha_Inicio: string;
-         fecha_Fin: string;
+        fecha_Fin: string;
         estado: string;
-        echa_Retorno: string;
+        fecha_Retorno: string;
 }

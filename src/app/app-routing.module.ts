@@ -13,19 +13,19 @@ const routes: Routes = [
   {
     path: '',
     component: MenuComponent,
-/*     canActivate: [AuthGuard], */
+     canActivate: [AuthGuard], 
   },
   {
     path: 'app',
     component: MenuComponent,
-    /* canActivate: [AuthGuard], */
+     canActivate: [AuthGuard], 
     loadChildren: () => import('./page/page.module').then(m => m.PageModule)
   },
     
   {
     path: 'login',
     component: LoginComponent,
-    // canActivate: [loginGuard],
+    canActivate: [loginGuard],
   },
   {
     path: '**',

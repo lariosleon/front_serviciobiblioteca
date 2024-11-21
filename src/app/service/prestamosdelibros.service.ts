@@ -20,6 +20,11 @@ export class PrestamosLibrosService {
     return this.http.get<any>(`${this.URL_API}/api/Prestamos`);
   }
 
+  getPost():Observable<librosprestados> {
+    debugger;
+    return this.http.get<librosprestados>(`${this.URL_API}/api/Prestamos`);
+  }
+
   enviarDatos(datos:any) {
     const headers = { 'content-type': 'application/json'}  
     const body=JSON.stringify(datos);
@@ -41,10 +46,6 @@ export class PrestamosLibrosService {
     const headers = { 'content-type': 'application/json'}  
     const body=JSON.stringify(datos);
     return this.http.put(`${this.URL_API}/api/Prestamos`, body,{'headers':headers});
-  }
-
-  verificarExistencia(cod: string) {
-    return this.http.get<ResponseData>(`${this.URL_API}/clientes/verificar-cliente/${cod}`);
   }
 
 }

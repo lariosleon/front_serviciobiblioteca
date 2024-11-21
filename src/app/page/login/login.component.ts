@@ -21,7 +21,7 @@ export class LoginComponent {
   ) {
 
     if(localStorage.getItem('token')){
-      this.router.navigate(['/app/cliente']);
+      this.router.navigate(['/app/prestamoslibros']);
     }
   }
 
@@ -30,8 +30,6 @@ export class LoginComponent {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
-
-
   }
 
   login(): void {
@@ -50,24 +48,33 @@ export class LoginComponent {
           console.log(code, data, response.data);
 
           switch (response.code) {
+            case 0:
+              this.mensajeLogin = response.data;
+              alert('Error en Usuario y/o Contraseña');
+              break;
             case 403:
               this.mensajeLogin = response.data;
+              alert('Error de inicio de sesion '+ this.mensajeLogin);
               break;
             case 200:
               this.mensajeLogin = response.data;
-              this.router.navigate(['/app/cliente']);
+              this.router.navigate(['/app/prestamoslibros']);
               console.log("se r")
               break;
             case 401:
               this.mensajeLogin = response.data;
+              alert('Error de inicio de sesion '+ this.mensajeLogin);
               break;
             case 400:
               this.mensajeLogin = response.data;
+              alert('Error de inicio de sesion '+ this.mensajeLogin);
               break;
             case 500:
               this.mensajeLogin = response.data;
+              alert('Error de inicio de sesion '+ this.mensajeLogin);
               break;
             default:
+              alert('Error de inicio de sesion');
               console.log('Error en inicio de sesión');
               break;
           }

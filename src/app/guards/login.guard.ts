@@ -14,7 +14,7 @@ export class loginGuard implements CanActivate {
     const token = localStorage.getItem('token');
 
     if (token) {
-      this.router.navigate(['/app/cliente']); 
+      this.router.navigate(['/app/prestamoslibros']); 
       return false; // Usuario autenticado, permite el acceso a la ruta
     } else {
       // Usuario no autenticado, redirige al componente de login
